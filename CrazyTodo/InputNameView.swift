@@ -16,7 +16,7 @@ struct InputNameView: View {
     var body: some View {
      
             VStack {
-                TextField("Enter some text", text: $inputText)
+                TextField("Type your title here", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
 

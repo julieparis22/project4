@@ -6,3 +6,4 @@
 //
 
 import Foundation
+public let Categories = ["other", "work", "leisure","family","friends" ]
