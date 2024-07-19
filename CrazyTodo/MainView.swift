@@ -6,13 +6,72 @@
 //
 
 import SwiftUI
+import SwiftData
+import Foundation
 
 struct MainView: View {
+
+    @Environment(\.modelContext) var modelContext
+    @State private var inputText: String = ""
+ //   @State private var selectedCategory: Category = .other
+    @Query var arrayOfItems: [Item]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                InputNameView(inputText: $inputText)
+                Button("ADD +", action: addItem)
+                    .font(.title)
+//                CategoryView(category: $selectedCategory)
+                Text(inputText)
+                    .font(.largeTitle)
+                Spacer()
+                VStack {
+                    ForEach(arrayOfItems) { item in
+                        HStack {
+       
+                            Text(item.date)
+                            Text(item.name)
+                 
+                            NavigationLink(destination: UpdateItemView(item: item)) {
+                                Text("Edit")
+                                    .foregroundColor(.blue)
+                            }
+                            
+                            Button(action: { deleteItems(item) }) {
+                                Text("-")
+                                    .font(.title)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            }
+            .navigationBarTitle("Crazy Todo").font(.callout)
+        }
     }
+    
+    
+    func addItem() {
+        let item = Item.init(name: inputText, indexCategory : 2)
+        modelContext.insert(item)
+        inputText = ""
+    }
+    
+    func deleteItems(_ item: Item) {
+        modelContext.delete(item)
+    }
+    
+    func updateItem(_ item: Item) {
+        item.name = "updated"
+        try? modelContext.save()
+    }
+    
+
 }
 
 #Preview {
     MainView()
 }
+/*
+**/
