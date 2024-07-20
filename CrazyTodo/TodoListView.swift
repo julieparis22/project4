@@ -24,21 +24,33 @@ struct TodoListView: View {
                 ScrollView {
                     VStack {
                         ForEach(arrayOfItems) { item in
-                            HStack {
-           
-                                Text(item.date)
-                                Text(item.name)
-                     
-                                NavigationLink(destination: UpdateItemView(item: item)) {
-                                    Text("Editer")
-                               
-                                }
-                                
-                                Button(action: { deleteItems(item) }) {
-                                    Text("--").font(.title)
-                                     
+                            ZStack {
+                                item.color
+                                VStack {
+                                    Text(item.date)
+                                    HStack {
+                                      
+                                        NavigationLink(destination: ReadItemView(item: item)) {
+                                          
+                                            Text(item.name).foregroundStyle(.button)
+                                            Image(systemName: "magnifyingglass").foregroundStyle(.script)
+                                       
+                                        }
+                                        Spacer()
+                             Button(action: { deleteItems(item) }) {
+                                            Text("Effacer -")
+                                             
+                                        }.foregroundStyle(.delete)
+                                        Spacer()
+                                    }.padding()
                                 }
                             }
+                        
+                            
+                           
+                            
+                            
+                            
                         }
                     }.padding()
                 }
@@ -69,24 +81,3 @@ struct TodoListView: View {
 #Preview {
     TodoListView()
 }
-/*
- func addItem() {
-     let item = Item(name: inputText, sfImage: "fuelpump.fill")
-     item.category = dummyItem.category
-     item.color = Color(dummyItem.category.rawValue)
-     modelContext.insert(item)
-     inputText = ""
- }
- InputTextField(inputText: $inputText)
- EditContentView(inputContent: $inputContent)
- CategoryView(dummyItem: $dummyItem, category: $selectedCategory)
- Button("AJOUTER +", action: addItem)
-
-
- 
-//    Text(inputText)
-    
- Spacer()
- 
- 
-**/

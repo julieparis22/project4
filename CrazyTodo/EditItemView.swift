@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct UpdateItemView: View {
+struct EditItemView: View {
     @Environment(\.modelContext) var modelContext
     @State var item: Item = Item(name: "sample", sfImage: "puelpump.fill")
     
@@ -73,11 +74,5 @@ struct UpdateItemView: View {
 }
 
 #Preview {
-    UpdateItemView(item: Item(name: "bla", sfImage: "puelpump.fill"))
+    EditItemView(item: Item(name: "bla", sfImage: "puelpump.fill"))
 }
-/*    InputNameView(inputText: $inputName)
- Button(action: {updateItem(item, text: inputName) }) {
-    Text("edit name ")
-
-        
- }**/

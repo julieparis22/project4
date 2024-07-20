@@ -11,7 +11,7 @@ import SwiftData
 import Foundation
 
 struct InputTextField: View {
-    @Binding var inputText: String // Ajout de 'private' pour le champ @State
+    @Binding var inputText: String 
 
     var body: some View {
      

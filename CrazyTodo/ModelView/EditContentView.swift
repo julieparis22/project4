@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct EditContentView: View {
-    @Binding var inputContent: String // Ajout de 'private' pour le champ @State
-  //  @Binding var inputName : String
+    @Binding var inputContent: String
+
 
     var body: some View {
      
             VStack {
-             //   InputTextField(inputText: $inputName)
+
               
                 
                 TextEditor(text: $inputContent)

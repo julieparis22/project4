@@ -39,6 +39,7 @@ struct AddItemView: View {
         item.color = Color(dummyItem.category.rawValue)
         modelContext.insert(item)
         inputText = ""
+        inputContent = ""
     }
     
     func deleteItems(_ item: Item) {
@@ -55,28 +56,3 @@ struct AddItemView: View {
 #Preview {
     AddItemView()
 }
-/**
- Spacer()
- ScrollView {
-     VStack {
-         ForEach(arrayOfItems) { item in
-             HStack {
-
-                 Text(item.date)
-                 Text(item.name)
-      
-                 NavigationLink(destination: UpdateItemView(item: item)) {
-                     Text("Editer")
-                
-                 }
-                 
-                 Button(action: { deleteItems(item) }) {
-                     Text("--").font(.title)
-                      
-                 }
-             }
-         }
-     }.padding()
- }
- 
- */

@@ -17,28 +17,25 @@ final class Item {
 
 
   
-    
-    // Valeur de couleur mappée pour chaque catégorie
-    // Valeur par défaut pour la couleur
+
      static var defaultColor: Color = .red
      
-     // Valeur de couleur stockée sous forme de chaîne (optionnelle si nécessaire)
+
      public var colorRawValue: String?
      
-     // Propriété calculée pour la couleur
-    // Propriété calculée pour la couleur
+
      var color: Color {
          get {
-                    // Assurez-vous que `category` n'est pas nil en fournissant une valeur par défaut
+               
              let effectiveCategory = category
                     return Item.categoryColorMapping[effectiveCategory] ?? Item.defaultColor
                 }
          set {
-             // Trouver la catégorie correspondant à la nouvelle couleur
+  
              if let category = Item.categoryColorMapping.first(where: { $0.value == newValue })?.key {
                  colorRawValue = category.rawValue
              } else {
-                 // Utiliser la catégorie par défaut si la couleur ne correspond à aucune catégorie
+              
                  colorRawValue = Item.defaultCategory.rawValue
              }
          }
@@ -65,7 +62,7 @@ final class Item {
              Item.categorySystemNameMapping[category] ?? "fuelpump.fill"
          }
          set {
-             // Trouve la catégorie correspondant au nom d'icône
+        
              if let newCategory = Item.categorySystemNameMapping.first(where: { $0.value == newValue })?.key {
                  category = newCategory
              } else {
@@ -74,16 +71,13 @@ final class Item {
          }
      }
      
-     // Dictionnaire pour mapper chaque catégorie à une couleur spécifique
+
  
 
     var name: String
      var id = UUID().uuidString
      var contentText: String = " "
-   // var color : Color
-  //  var color : Color = Color("other")
-    
-    //fichu Category
+
      
     enum Category: String, CaseIterable, Identifiable {
         case leisure = "Loisirs"
@@ -100,7 +94,7 @@ final class Item {
     static var defaultCategory: Category = .other
   
 
-  //   static var defaultCategory: Category = .other
+
    
      
      private var computedCategory: Category {
@@ -121,12 +115,12 @@ final class Item {
            }
        }
        
-    //fichu Category fin
+
     var date: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "fr_FR") // Définir la locale en français
+        dateFormatter.locale = Locale(identifier: "fr_FR")
         return dateFormatter.string(from: Date())
     }
 

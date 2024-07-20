@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CE6DBDDC2C4A61190058A48F /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DBDDB2C4A61190058A48F /* InputTextField.swift */; };
-		CE6DBDE22C4A67B60058A48F /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DBDE12C4A67B60058A48F /* UpdateItemView.swift */; };
+		CE6DBDE22C4A67B60058A48F /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DBDE12C4A67B60058A48F /* EditItemView.swift */; };
 		CE6DBDE42C4A6FF90058A48F /* EditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DBDE32C4A6FF90058A48F /* EditContentView.swift */; };
 		CE6DBDE92C4A93A70058A48F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DBDE82C4A93A70058A48F /* CategoryView.swift */; };
 		CE76DAE22C4C38EE008C3929 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76DAE12C4C38EE008C3929 /* AddItemView.swift */; };
+		CE76DAE42C4C3A40008C3929 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76DAE32C4C3A40008C3929 /* MenuView.swift */; };
+		CE76DAE82C4C3C2E008C3929 /* ReadItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76DAE72C4C3C2E008C3929 /* ReadItemView.swift */; };
 		CED88D8E2C49A52500AF0A08 /* CrazyTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED88D8D2C49A52500AF0A08 /* CrazyTodoApp.swift */; };
 		CED88D922C49A52500AF0A08 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED88D912C49A52500AF0A08 /* Item.swift */; };
 		CED88D942C49A52D00AF0A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED88D932C49A52D00AF0A08 /* Assets.xcassets */; };
@@ -21,10 +23,12 @@
 
 /* Begin PBXFileReference section */
 		CE6DBDDB2C4A61190058A48F /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
-		CE6DBDE12C4A67B60058A48F /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
+		CE6DBDE12C4A67B60058A48F /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		CE6DBDE32C4A6FF90058A48F /* EditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentView.swift; sourceTree = "<group>"; };
 		CE6DBDE82C4A93A70058A48F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		CE76DAE12C4C38EE008C3929 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		CE76DAE32C4C3A40008C3929 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		CE76DAE72C4C3C2E008C3929 /* ReadItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemView.swift; sourceTree = "<group>"; };
 		CED88D8A2C49A52500AF0A08 /* CrazyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrazyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED88D8D2C49A52500AF0A08 /* CrazyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrazyTodoApp.swift; sourceTree = "<group>"; };
 		CED88D912C49A52500AF0A08 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -84,8 +88,10 @@
 				CE7AD74A2C4BCC8800048EB5 /* Model */,
 				CED88D8D2C49A52500AF0A08 /* CrazyTodoApp.swift */,
 				CED88D9D2C49A5E900AF0A08 /* TodoListView.swift */,
+				CE76DAE72C4C3C2E008C3929 /* ReadItemView.swift */,
+				CE76DAE32C4C3A40008C3929 /* MenuView.swift */,
 				CE76DAE12C4C38EE008C3929 /* AddItemView.swift */,
-				CE6DBDE12C4A67B60058A48F /* UpdateItemView.swift */,
+				CE6DBDE12C4A67B60058A48F /* EditItemView.swift */,
 				CE6DBDE82C4A93A70058A48F /* CategoryView.swift */,
 				CED88D932C49A52D00AF0A08 /* Assets.xcassets */,
 				CED88D952C49A52D00AF0A08 /* Preview Content */,
@@ -173,8 +179,10 @@
 			files = (
 				CE6DBDE42C4A6FF90058A48F /* EditContentView.swift in Sources */,
 				CE6DBDDC2C4A61190058A48F /* InputTextField.swift in Sources */,
-				CE6DBDE22C4A67B60058A48F /* UpdateItemView.swift in Sources */,
+				CE6DBDE22C4A67B60058A48F /* EditItemView.swift in Sources */,
 				CED88D9E2C49A5E900AF0A08 /* TodoListView.swift in Sources */,
+				CE76DAE42C4C3A40008C3929 /* MenuView.swift in Sources */,
+				CE76DAE82C4C3C2E008C3929 /* ReadItemView.swift in Sources */,
 				CED88D922C49A52500AF0A08 /* Item.swift in Sources */,
 				CED88D8E2C49A52500AF0A08 /* CrazyTodoApp.swift in Sources */,
 				CE6DBDE92C4A93A70058A48F /* CategoryView.swift in Sources */,
