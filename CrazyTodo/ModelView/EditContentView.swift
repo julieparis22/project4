@@ -9,10 +9,12 @@ import SwiftUI
 
 struct EditContentView: View {
     @Binding var inputContent: String // Ajout de 'private' pour le champ @State
+    @Binding var inputName : String
 
     var body: some View {
      
             VStack {
+                InputNameView(inputText: $inputName)
                 TextField("Edit Todo", text:  $inputContent)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
@@ -26,5 +28,5 @@ struct EditContentView: View {
 }
 
 #Preview {
-    EditContentView(inputContent:.constant("test"))
+    EditContentView(inputContent:.constant("test"), inputName : .constant("test"))
 }

@@ -10,10 +10,10 @@ import SwiftData
 import Foundation
 
 struct MainView: View {
-
+    @State var dummyItem = Item(name: "test")
     @Environment(\.modelContext) var modelContext
     @State private var inputText: String = ""
- //   @State private var selectedCategory: Category = .other
+    @State var selectedCategory: Item.Category = .family
     @Query var arrayOfItems: [Item]
 
     var body: some View {
@@ -21,11 +21,9 @@ struct MainView: View {
             VStack {
                 InputNameView(inputText: $inputText)
                 Button("ADD +", action: addItem)
-                // test CategoryView
+                CategoryView(dummyItem: $dummyItem, category: $selectedCategory)
+
                 
-                CategoryView()
-                    .font(.title)
-//                CategoryView(category: $selectedCategory)
                 Text(inputText)
                     .font(.largeTitle)
                 Spacer()
@@ -56,7 +54,9 @@ struct MainView: View {
     
     
     func addItem() {
-        let item = Item.init(name: inputText)
+        let item = Item(name: inputText)
+        item.category = dummyItem.category
+        item.color = Color(dummyItem.category.rawValue)
         modelContext.insert(item)
         inputText = ""
     }

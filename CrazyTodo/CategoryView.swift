@@ -10,16 +10,22 @@ import SwiftUI
 import SwiftUI
 
 struct CategoryView: View {
-    @State var item: Item = Item(name: "sample")
-     
+    @Binding var dummyItem: Item
+    @Binding var category: Item.Category
      var body: some View {
          VStack {
-             Text("Current Category: \(item.category.rawValue)")
+             Rectangle().foregroundStyle(dummyItem.color)
+             Text("selected: \(dummyItem.category.rawValue)")
              
-             Picker("Select Category", selection: $item.category) {
+             Picker("Select Category", selection: $dummyItem.category) {
                  ForEach(Item.Category.allCases) { category in
                      Text(category.rawValue).tag(category)
                  }
+                 Picker("Select Category", selection: $category) {
+                               ForEach(Item.Category.allCases) { cat in
+                                   Text(cat.rawValue).tag(cat)
+                               }
+                           }
              }
              .pickerStyle(SegmentedPickerStyle())
          }
@@ -29,7 +35,7 @@ struct CategoryView: View {
 
 
 #Preview {
-    CategoryView()
+    CategoryView(dummyItem: .constant(Item(name: "test")), category: .constant(.other))
 }
 /**    
  

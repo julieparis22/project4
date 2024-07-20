@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct InputContentView: View {
+    @Binding var inputText: String // Ajout de 'private' pour le champ @State
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("Write your Todo here", text: $inputText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+    
+       
+        }
     }
 }
 
 #Preview {
-    InputContentView()
+    InputContentView(inputText:.constant("test"))
 }

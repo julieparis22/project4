@@ -13,10 +13,51 @@ import UIKit
 
 @Model
 final class Item {
+    
+
+
+  
+    
+    // Valeur de couleur mappée pour chaque catégorie
+    // Valeur par défaut pour la couleur
+     static var defaultColor: Color = .red
+     
+     // Valeur de couleur stockée sous forme de chaîne (optionnelle si nécessaire)
+     public var colorRawValue: String?
+     
+     // Propriété calculée pour la couleur
+    // Propriété calculée pour la couleur
+     var color: Color {
+         get {
+                    // Assurez-vous que `category` n'est pas nil en fournissant une valeur par défaut
+             let effectiveCategory = category
+                    return Item.categoryColorMapping[effectiveCategory] ?? Item.defaultColor
+                }
+         set {
+             // Trouver la catégorie correspondant à la nouvelle couleur
+             if let category = Item.categoryColorMapping.first(where: { $0.value == newValue })?.key {
+                 colorRawValue = category.rawValue
+             } else {
+                 // Utiliser la catégorie par défaut si la couleur ne correspond à aucune catégorie
+                 colorRawValue = Item.defaultCategory.rawValue
+             }
+         }
+     }
+     
+     // Dictionnaire pour mapper chaque catégorie à une couleur spécifique
+     private static let categoryColorMapping: [Category: Color] = [
+        .leisure: .leisure,
+        .work: .work,
+        .family: .family,
+        .friends: .friends,
+        .other: .other
+     ]
 
     var name: String
      var id = UUID().uuidString
      var contentText: String = " "
+   // var color : Color
+  //  var color : Color = Color("other")
     
     //fichu Category
      
@@ -47,7 +88,7 @@ final class Item {
          }
      }
      
-    var category: Category {
+    var category: Category  {
            get {
                return Category(rawValue: categoryRawValue ?? "") ?? Item.defaultCategory
            }
@@ -64,12 +105,11 @@ final class Item {
          return dateFormatter.string(from: Date())
      }
 
-     // Initialiseur
-    init(name: String) {
-          self.name = name
-      
-          
-      }
+    init(name: String, category: Category = .other) {
+         self.name = name
+         self.category = category
+     }
+     
    
 
  }
