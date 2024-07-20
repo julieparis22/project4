@@ -10,22 +10,42 @@ import SwiftUI
 import SwiftUI
 
 struct CategoryView: View {
-//    @Binding var category: Item.Category
-    
-    var body: some View {
-        VStack {
-            Text("Select a Category:")
-                .font(.headline)
-            
-        }
-    }
+    @State var item: Item = Item(name: "sample")
+     
+     var body: some View {
+         VStack {
+             Text("Current Category: \(item.category.rawValue)")
+             
+             Picker("Select Category", selection: $item.category) {
+                 ForEach(Item.Category.allCases) { category in
+                     Text(category.rawValue).tag(category)
+                 }
+             }
+             .pickerStyle(SegmentedPickerStyle())
+         }
+         .padding()
+     }
 }
 
 
 #Preview {
     CategoryView()
 }
-/**      Picker("Category", selection: $category) {
+/**    
+ 
+ 
+ Text("Current Category: \(item.category.rawValue)")
+             .padding()
+
+         Picker("Select Category", selection: $item.category) {
+             ForEach(Category.allCases) { category in
+                 Text(category.rawValue.capitalized).tag(category)
+             }
+         }
+ 
+ 
+ 
+ Picker("Category", selection: $category) {
  ForEach(Item.Category.allCases) { category in
      Text(self.categoryTitle(for: category))
          .tag(category)
