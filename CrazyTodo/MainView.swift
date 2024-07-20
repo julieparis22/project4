@@ -21,6 +21,9 @@ struct MainView: View {
             VStack {
                 InputNameView(inputText: $inputText)
                 Button("ADD +", action: addItem)
+                // test CategoryView
+                
+                CategoryView()
                     .font(.title)
 //                CategoryView(category: $selectedCategory)
                 Text(inputText)
@@ -53,7 +56,7 @@ struct MainView: View {
     
     
     func addItem() {
-        let item = Item.init(name: inputText, indexCategory : 2)
+        let item = Item.init(name: inputText)
         modelContext.insert(item)
         inputText = ""
     }

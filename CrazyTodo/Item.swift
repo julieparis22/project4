@@ -17,23 +17,46 @@ final class Item {
     var name: String
      var id = UUID().uuidString
      var contentText: String = " "
+    
+    //fichu Category
      
+    enum Category: String, CaseIterable, Identifiable {
+        case leisure = "leisure"
+         case work = "work"
+         case family = "family"
+         case friends = "friends"
+        case other = "other"
+        
+        var id: String { rawValue }
+     }
+     
+    public var categoryRawValue: String?
+    
+    static var defaultCategory: Category = .other
+  
 
-    
-    var category : String
-    
-    var indexCategory: Int {
-        didSet {
-            if index < 0 {
-                index = 0
-            } else if index > 4 {
-                index = 4
-            }
-        }
-    }
-    
-  //  var Categories = ["other", "work", "leisure","family","friends" ]
-
+  //   static var defaultCategory: Category = .other
+   
+     
+     private var computedCategory: Category {
+         get {
+             return Category(rawValue: categoryRawValue ?? "") ?? Item.defaultCategory
+         }
+         set {
+             categoryRawValue = newValue.rawValue
+         }
+     }
+     
+    var category: Category {
+           get {
+               return Category(rawValue: categoryRawValue ?? "") ?? Item.defaultCategory
+           }
+           set {
+               categoryRawValue = newValue.rawValue
+           }
+       }
+       
+    //fichu Category fin
      var date: String {
          let dateFormatter = DateFormatter()
          dateFormatter.dateStyle = .medium
@@ -42,13 +65,11 @@ final class Item {
      }
 
      // Initialiseur
-    init(name: String, indexCategory : Int) {
-         self.name = name
-         self.indexCategory = indexCategory
-        self.category = Categories[0]
-    
-     }
-    
+    init(name: String) {
+          self.name = name
+      
+          
+      }
    
 
  }

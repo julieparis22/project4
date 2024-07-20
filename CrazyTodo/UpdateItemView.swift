@@ -52,7 +52,7 @@ struct UpdateItemView: View {
 }
 
 #Preview {
-    UpdateItemView(item: Item(name: "bla", indexCategory: 2))
+    UpdateItemView(item: Item(name: "bla"))
 }
 /*    InputNameView(inputText: $inputName)
  Button(action: {updateItem(item, text: inputName) }) {
