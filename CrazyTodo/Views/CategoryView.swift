@@ -14,12 +14,11 @@ struct CategoryView: View {
     @Binding var category: Item.Category
      var body: some View {
          VStack {
-
-
              
              Picker("Select Category", selection: $dummyItem.category) {
                  ForEach(Item.Category.allCases) { category in
                      Text(category.rawValue).tag(category)
+                   
                  }
          
              }

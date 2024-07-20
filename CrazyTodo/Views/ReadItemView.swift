@@ -1,14 +1,14 @@
 //
-//  UpdateItemView.swift
+//  ReadItemView.swift
 //  CrazyTodo
 //
-//  Created by julie ryan on 19/07/2024.
+//  Created by julie ryan on 20/07/2024.
 //
 
 import SwiftUI
 import SwiftData
 
-struct EditItemView: View {
+struct ReadItemView: View {
     @Environment(\.modelContext) var modelContext
     @State var item: Item = Item(name: "sample", sfImage: "puelpump.fill")
     
@@ -40,28 +40,27 @@ struct EditItemView: View {
                     Image(systemName: item.sfImage)
                 }
                           
-             
-                InputTextField(inputText: $inputName)
-                 EditContentView(inputContent: $inputContent)
-     
-                    
-                    Button(action: {
-                        updateItemContext(item, text: inputContent)
-                    }) {
-                        Text("Submit change")
-                    }
+
+            
                 Text(item.name).font(.title)
                     ScrollView {
                       
                         Text(item.contentText)
                             .padding()
-                            .foregroundColor(.black)
-                    }
-               
+                            .foregroundColor(.script)
+                    }         .frame(height: 200)
+                    .clipped()
+                NavigationLink(destination: EditItemView(item: item)) {
+              
+                    Text("EDITER").font(.title).foregroundStyle(.button)
+                    Image(systemName: "pencil.tip").foregroundStyle(.button)
                     Spacer()
                 }
+               
+
+                }
                 .padding()
-            
+
         }
      
         }
@@ -74,5 +73,5 @@ struct EditItemView: View {
 }
 
 #Preview {
-    EditItemView(item: Item(name: "bla", sfImage: "puelpump.fill"))
+    ReadItemView(item: Item(name: "bla", sfImage: "puelpump.fill"))
 }
