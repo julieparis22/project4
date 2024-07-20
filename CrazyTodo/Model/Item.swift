@@ -43,15 +43,39 @@ final class Item {
              }
          }
      }
+    private static let categoryColorMapping: [Category: Color] = [
+       .leisure: .leisure,
+       .work: .work,
+       .family: .family,
+       .friends: .friends,
+       .other: .other
+    ]
+    
+    private static let categorySystemNameMapping: [Category: String] = [
+       .leisure: "heart.fill",
+       .work: "figure.dance",
+       .family: "figure.2.and.child.holdinghands",
+       .friends: "heart.fill",
+       .other: "fuelpump.fill"
+    ]
+    
+    var sfImage: String {
+         get {
+          
+             Item.categorySystemNameMapping[category] ?? "fuelpump.fill"
+         }
+         set {
+             // Trouve la catégorie correspondant au nom d'icône
+             if let newCategory = Item.categorySystemNameMapping.first(where: { $0.value == newValue })?.key {
+                 category = newCategory
+             } else {
+                 category = Item.defaultCategory
+             }
+         }
+     }
      
      // Dictionnaire pour mapper chaque catégorie à une couleur spécifique
-     private static let categoryColorMapping: [Category: Color] = [
-        .leisure: .leisure,
-        .work: .work,
-        .family: .family,
-        .friends: .friends,
-        .other: .other
-     ]
+ 
 
     var name: String
      var id = UUID().uuidString
@@ -62,11 +86,11 @@ final class Item {
     //fichu Category
      
     enum Category: String, CaseIterable, Identifiable {
-        case leisure = "leisure"
-         case work = "work"
-         case family = "family"
-         case friends = "friends"
-        case other = "other"
+        case leisure = "Loisirs"
+         case work = "Travail"
+         case family = "Famille"
+         case friends = "Amis"
+        case other = "Autre"
         
         var id: String { rawValue }
      }
@@ -98,33 +122,21 @@ final class Item {
        }
        
     //fichu Category fin
-     var date: String {
-         let dateFormatter = DateFormatter()
-         dateFormatter.dateStyle = .medium
-         dateFormatter.timeStyle = .short
-         return dateFormatter.string(from: Date())
-     }
+    var date: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "fr_FR") // Définir la locale en français
+        return dateFormatter.string(from: Date())
+    }
 
-    init(name: String, category: Category = .other) {
+    init(name: String, category: Category = .other, sfImage : String) {
          self.name = name
          self.category = category
+        self.sfImage = "puelpump.fill"
      }
      
    
 
  }
 
-/*     // Enum définie à l'intérieur de la classe Item
- 
- enum Category: String, CaseIterable, Identifiable {
-      case work
-      case leisure
-      case family
-      case friends
-      case other
-
-      var id: String { rawValue }
-  }
- static var defaultCategory : Category = .other
- 
- **/

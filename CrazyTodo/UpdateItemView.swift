@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UpdateItemView: View {
     @Environment(\.modelContext) var modelContext
-    @State var item: Item = Item(name: "sample")
+    @State var item: Item = Item(name: "sample", sfImage: "puelpump.fill")
     
 
     
@@ -25,41 +25,45 @@ struct UpdateItemView: View {
     }
 
     var body: some View {
-        
-        VStack(alignment: .leading) {
-            Rectangle().foregroundStyle(item.color)
-                Text(item.date)
-                    .font(.title)
-            Text("\( item.category.rawValue)")
-                
-            Text("Color: \(item.color.description)")
-                          .font(.subheadline)
+        ZStack {
+            item.color.ignoresSafeArea(.all)
+      
+            
+            VStack(alignment: .leading) {
+             Text(item.date)
+                        .font(.title)
+              
+             
+                HStack {
+                    Text("Categorie: \(item.category.rawValue) : ")
+                    Image(systemName: item.sfImage)
+                }
+                          
+             
+                InputTextField(inputText: $inputName)
+                 EditContentView(inputContent: $inputContent)
+     
+                    
+                    Button(action: {
+                        updateItemContext(item, text: inputContent)
+                    }) {
+                        Text("Submit change")
+                    }
+                Text(item.name).font(.title)
+                    ScrollView {
                       
-            Text("Current Category: \(item.category.rawValue)")
-            
-                EditContentView(inputContent: $inputContent, inputName: $inputName)
- 
-                
-                Button(action: {
-                    updateItemContext(item, text: inputContent)
-                }) {
-                    Text("Submit change")
+                        Text(item.contentText)
+                            .padding()
+                            .foregroundColor(.black)
+                    }
+               
+                    Spacer()
                 }
-            Text(item.name).font(.title)
-                ScrollView {
-                  
-                    Text(item.contentText)
-                        .padding()
-                        .foregroundColor(.black)
-                }
-           
-                Spacer()
-            }
-            .padding()
+                .padding()
             
-   
- 
-    }
+        }
+     
+        }
     
     func updateItemContext(_ item: Item, text : String) {
         item.contentText = inputContent
@@ -69,7 +73,7 @@ struct UpdateItemView: View {
 }
 
 #Preview {
-    UpdateItemView(item: Item(name: "bla"))
+    UpdateItemView(item: Item(name: "bla", sfImage: "puelpump.fill"))
 }
 /*    InputNameView(inputText: $inputName)
  Button(action: {updateItem(item, text: inputName) }) {

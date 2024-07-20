@@ -14,18 +14,14 @@ struct CategoryView: View {
     @Binding var category: Item.Category
      var body: some View {
          VStack {
-             Rectangle().foregroundStyle(dummyItem.color)
-             Text("selected: \(dummyItem.category.rawValue)")
+
+            // Text("choisir categorie: \(dummyItem.category.rawValue)")
              
              Picker("Select Category", selection: $dummyItem.category) {
                  ForEach(Item.Category.allCases) { category in
                      Text(category.rawValue).tag(category)
                  }
-                 Picker("Select Category", selection: $category) {
-                               ForEach(Item.Category.allCases) { cat in
-                                   Text(cat.rawValue).tag(cat)
-                               }
-                           }
+         
              }
              .pickerStyle(SegmentedPickerStyle())
          }
@@ -35,7 +31,7 @@ struct CategoryView: View {
 
 
 #Preview {
-    CategoryView(dummyItem: .constant(Item(name: "test")), category: .constant(.other))
+    CategoryView(dummyItem: .constant(Item(name: "test", sfImage: "fuelpump.fill")), category: .constant(.other))
 }
 /**    
  
