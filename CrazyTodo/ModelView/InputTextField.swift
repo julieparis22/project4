@@ -10,13 +10,13 @@ import SwiftUI
 import SwiftData
 import Foundation
 
-struct InputNameView: View {
-    @Binding var inputText: String // Ajout de 'private' pour le champ @State
+struct InputTextField: View {
+    @Binding var inputText: String 
 
     var body: some View {
      
             VStack {
-                TextField("Type your title here", text: $inputText)
+                TextField("Nom", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
 
@@ -29,5 +29,5 @@ struct InputNameView: View {
 }
 
 #Preview {
-    InputNameView(inputText:.constant("test"))
+    InputTextField(inputText:.constant("test"))
 }
