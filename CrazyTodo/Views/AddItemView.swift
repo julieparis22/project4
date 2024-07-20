@@ -27,7 +27,7 @@ struct AddItemView: View {
                
                 Spacer()
             }
-            .navigationBarTitle("Crazy Todo").font(.callout)
+            .navigationBarTitle("Ajouter").font(.callout).foregroundStyle(.button)
         }
     }
     
@@ -42,14 +42,9 @@ struct AddItemView: View {
         inputContent = ""
     }
     
-    func deleteItems(_ item: Item) {
-        modelContext.delete(item)
-    }
+
     
-    func updateItem(_ item: Item) {
-        item.name = "updated"
-        try? modelContext.save()
-    }
+
     
 }
 

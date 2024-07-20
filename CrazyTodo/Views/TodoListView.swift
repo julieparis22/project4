@@ -15,67 +15,62 @@ struct TodoListView: View {
     @State private var inputText: String = ""
     @State var selectedCategory: Item.Category = .family
     @Query var arrayOfItems: [Item]
-    @State private var inputContent : String = ""
+    @State private var inputContent: String = ""
 
     var body: some View {
         NavigationView {
             VStack {
-          
                 ScrollView {
                     VStack {
                         ForEach(arrayOfItems) { item in
                             ZStack {
                                 item.color
+                                
                                 VStack {
                                     Text(item.date)
+                                    
                                     HStack {
-                                      
                                         NavigationLink(destination: ReadItemView(item: item)) {
-                                          
-                                            Text(item.name).foregroundStyle(.button)
-                                            Image(systemName: "magnifyingglass").foregroundStyle(.script)
-                                       
+                                            Image(systemName: item.sfImage)
+                                                .foregroundStyle(.script)
+                                            
+                                            Spacer()
+                                            
+                                            Text(item.name)
+                                                .foregroundStyle(.button)
+                                            
+                                            Image(systemName: "magnifyingglass")
+                                                .foregroundStyle(.script)
                                         }
+                                        
                                         Spacer()
-                             Button(action: { deleteItems(item) }) {
+                                        Spacer()
+                                        
+                                        Button(action: { deleteItems(item) }) {
                                             Text("Effacer -")
-                                             
-                                        }.foregroundStyle(.delete)
+                                        }
+                                        .foregroundStyle(.delete)
+                                        
                                         Spacer()
-                                    }.padding()
+                                    }
+                                    .padding()
                                 }
                             }
-                        
-                            
-                           
-                            
-                            
-                            
                         }
-                    }.padding()
+                    }
+                    .padding()
                 }
-        
-                
                 
                 Spacer()
             }
-            .navigationBarTitle("Crazy Todo").font(.callout)
+            .navigationBarTitle("Listes des taches")
+            .font(.callout)
         }
     }
-    
-    
 
-    
     func deleteItems(_ item: Item) {
         modelContext.delete(item)
     }
-    
-    func updateItem(_ item: Item) {
-        item.name = "updated"
-        try? modelContext.save()
-    }
-    
-
 }
 
 #Preview {

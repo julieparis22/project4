@@ -25,7 +25,7 @@ struct CrazyTodoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MenuView()
+            SplashScreen()
         }
         .modelContainer(sharedModelContainer)
     }

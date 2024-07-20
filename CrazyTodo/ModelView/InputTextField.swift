@@ -6,28 +6,32 @@
 //
 
 import SwiftUI
-
 import SwiftData
 import Foundation
 
 struct InputTextField: View {
-    @Binding var inputText: String 
+    @Binding var inputText: String
+    @State private var placeHolder: String = ""
 
     var body: some View {
-     
-            VStack {
-                TextField("Nom", text: $inputText)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
-        
-           
+        ZStack {
+            if inputText.isEmpty {
+                Text("Nom")
+                    .foregroundColor(.textField)
+                    .padding(.leading, 8)
+                    .padding(.vertical, 12)
             }
-          
-        
+            
+            TextField("", text: $inputText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(8)
+                .border(Color.gray, width: 1)
+        }
     }
 }
 
 #Preview {
-    InputTextField(inputText:.constant("test"))
+    InputTextField(inputText: .constant("test"))
 }
